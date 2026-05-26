@@ -27,7 +27,7 @@
       --bg-card:    #1e2535;
       --text:       #e0e0e0;
       --text-muted: #aaaaaa;
-      --text-faint: #777777;
+      --text-faint: #666666;
       --accent:     #90b8e0;
       --rule:       #5a9fd4;
       --shadow:     rgba(0,0,0,0.5);
@@ -131,7 +131,6 @@
     }
 
     .contact-row a:hover { color: var(--accent); }
-
     .contact-row svg { flex-shrink: 0; }
 
     /* ── Sections ── */
@@ -150,14 +149,51 @@
 
     /* ── Skills ── */
     .skills { margin-top: 6px; }
-
     .skill-row { font-size: 10.5pt; margin-bottom: 3px; color: var(--text); }
-
     .skill-row strong { color: var(--text); }
 
-    /* ── Experience ── */
-    .job { margin-top: 10px; }
+    /* ── Experience: stacked company block ── */
+    .company-block { margin-top: 14px; }
 
+    .company-name {
+      font-size: 11pt;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .company-tenure {
+      font-size: 9.5pt;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .role-block { margin-bottom: 10px; padding-left: 12px; border-left: 2px solid var(--rule); }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .role-title {
+      font-size: 10.5pt;
+      font-style: italic;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .role-dates {
+      font-size: 9.5pt;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Standard job header (single-role companies) ── */
+    .job { margin-top: 12px; }
     .job-header {
       font-size: 10.5pt;
       font-weight: bold;
@@ -168,13 +204,11 @@
       gap: 0;
       margin-bottom: 4px;
     }
-
     .job-header .sep   { color: var(--sep-color); margin: 0 6px; font-weight: normal; }
     .job-header .title { font-style: italic; font-weight: normal; color: var(--text); }
     .job-header .dates { font-weight: normal; color: var(--text-muted); }
 
     ul { margin-left: 20px; margin-top: 2px; }
-
     ul li { font-size: 10.5pt; margin-bottom: 3px; color: var(--text); }
 
     /* ── Projects ── */
@@ -251,6 +285,7 @@
 
     <div class="section-header">Experience</div>
 
+    <!-- M2 Systems -->
     <div class="job">
       <div class="job-header">
         M2 Systems Corporation <span class="sep">|</span> <span class="title">Senior Software Developer</span> <span class="sep">|</span> <span class="dates">03/2024 – 03/2026</span>
@@ -260,66 +295,84 @@
         <li>Contributed to gRPC/Protocol Buffers APIs supporting payment processing and authorization services for EU financial institutions.</li>
         <li>Built ancillary services including a webhook notification producer for transaction and status-change events, and a fraud detection service triggered during card digitization.</li>
         <li>Led Java modernization effort, upgrading services from Java 7 to 11 and migrating the build process from manual javac compilation to Gradle, reducing build complexity and improving dependency management across the codebase.</li>
-        <li>Architected and led a full platform rewrite from Java to Go with a PostgreSQL persistence layer, and introduced an automated CI pipeline using GitHub Actions covering 10+ services and repositories — enabling build, test, and containerization on every push. Reduced dependency size by 87%.</li>
+        <li>Architected and led a full platform rewrite from Java to Go and introduced an automated CI pipeline using GitHub Actions covering 10+ services and repositories — enabling build, test, and containerization on every push. Reduced dependency size by 87%.</li>
       </ul>
     </div>
 
-    <div class="job">
-      <div class="job-header">
-        Conga <span class="sep">|</span> <span class="title">Senior Software Engineer</span> <span class="sep">|</span> <span class="dates">05/2021 – 02/2024</span>
+    <!-- Conga — stacked -->
+    <div class="company-block">
+      <div class="company-name">Conga</div>
+      <div class="company-tenure">05/2016 – 02/2024</div>
+
+      <div class="role-block">
+        <div class="role-header">
+          <span class="role-title">Senior Software Engineer</span>
+          <span class="role-dates">05/2021 – 02/2024</span>
+        </div>
+        <ul>
+          <li>Collaborated with product management and architects on a 50+ person engineering team to design and build RESTful APIs for an e-signature platform comprising multiple orchestrated microservices in .NET Core.</li>
+          <li>Implemented event-driven architecture using AWS SQS/SNS to decouple microservices and improve system resilience.</li>
+          <li>Developed React application leveraging an in-house component library, integrating with e-signature APIs and managing global state with Redux.</li>
+          <li>Owned planning, building, and deploying monthly releases using GitHub Actions + Jenkins (CI) and Spinnaker pipelines (CD).</li>
+          <li>Modularized Terraform infrastructure, decomposing monolithic components into reusable templates that were version controlled and adopted by 5 teams across the organization to standardize stack provisioning.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Collaborated with product management and architects on a 50+ person engineering team to design and build RESTful APIs for an e-signature platform comprising multiple orchestrated microservices in .NET Core.</li>
-        <li>Implemented event-driven architecture using AWS SQS/SNS to decouple microservices and improve system resilience.</li>
-        <li>Developed React application leveraging an in-house component library, integrating with e-signature APIs and managing global state with Redux.</li>
-        <li>Owned planning, building, and deploying monthly releases using GitHub Actions + Jenkins (CI) and Spinnaker pipelines (CD).</li>
-        <li>Modularized Terraform infrastructure, decomposing monolithic components into reusable templates that were  version controlled and adopted by 5 teams across the organization to standardize stack provisioning. </li>
-      </ul>
-    </div>
 
-    <div class="job">
-      <div class="job-header">
-        Conga <span class="sep">|</span> <span class="title">Software Engineer</span> <span class="sep">|</span> <span class="dates">06/2018 – 05/2021</span>
+      <div class="role-block">
+        <div class="role-header">
+          <span class="role-title">Software Engineer</span>
+          <span class="role-dates">06/2018 – 05/2021</span>
+        </div>
+        <ul>
+          <li>Contributed full-stack development for an e-signature application with native Salesforce integration, including custom Apex classes, Lightning Web Components (SLDS), Java APIs, React frontend, and PostgreSQL persistence layer.</li>
+          <li>Contributed to the migration of production infrastructure from AWS Elastic Beanstalk to Kubernetes, improving scalability, manageability, and deployment consistency.</li>
+          <li>Maintained SOC 2 Type II compliance by planning and executing annual disaster recovery exercises, restoring the application in a failover region within 1 hour of a simulated outage.</li>
+          <li>Delivered work in 2-week Agile sprint cycles using backlog refinement, sprint planning, and retrospectives.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Contributed full-stack development for an e-signature application with native Salesforce integration, including custom Apex classes, Lightning Web Components (SLDS), Java APIs, React frontend, and PostgreSQL persistence layer.</li>
-        <li>Contributed to the migration of production infrastructure from AWS Elastic Beanstalk to Kubernetes, improving scalability, manageability, and deployment consistency.</li>
-        <li>Maintained SOC 2 Type II compliance by planning and executing annual disaster recovery exercises, restoring the application in a failover region within 1 hour of a simulated outage.</li>
-        <li>Delivered work in 2-week Agile sprint cycles using backlog refinement, sprint planning, and retrospectives.</li>
-      </ul>
-    </div>
 
-    <div class="job">
-      <div class="job-header">
-        Conga <span class="sep">|</span> <span class="title">Senior Technical Consultant</span> <span class="sep">|</span> <span class="dates">05/2016 – 06/2018</span>
+      <div class="role-block">
+        <div class="role-header">
+          <span class="role-title">Senior Technical Consultant</span>
+          <span class="role-dates">05/2016 – 06/2018</span>
+        </div>
+        <ul>
+          <li>Worked directly with over 30 clients to scope, build, and deliver custom integration middleware between contract management software and platforms including Workday, Salesforce, and MS Dynamics.</li>
+          <li>Maintained 50+ continuously running, business-critical integrations adhering to the OSGi standard using Apache ServiceMix/Karaf.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Worked directly with over 30 clients to scope, build, and deliver custom integration middleware between contract management software and platforms including Workday, Salesforce, and MS Dynamics.</li>
-        <li>Maintained 50+ continuously running, business-critical integrations adhering to the OSGi standard using Apache ServiceMix/Karaf.</li>
-      </ul>
     </div>
 
-    <div class="job">
-      <div class="job-header">
-        Novatus Inc. <span class="sep">|</span> <span class="title">Technical Services Developer</span> <span class="sep">|</span> <span class="dates">03/2015 – 05/2016</span>
+    <!-- Novatus -->
+    <div class="company-block">
+      <div class="company-name">Novatus Inc.</div>
+      <div class="company-tenure">03/2014 – 05/2016</div>
+
+      <div class="role-block">
+        <div class="role-header">
+          <span class="role-title">Technical Services Developer</span>
+          <span class="role-dates">03/2015 – 05/2016</span>
+        </div>
+        <ul>
+          <li>Designed and implemented a reusable data migration service using Hibernate, automating the mapping and creation of contract metadata in a PostgreSQL database for 100+ client onboardings.</li>
+          <li>Leveraged JasperReports to deliver regularly scheduled custom reports against PostgreSQL and MSSQL databases per client requirements.</li>
+          <li>Led ETL-based migration from MSSQL to PostgreSQL, resolving schema differences and optimizing performance in the target environment.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Designed and implemented a reusable data migration service using Hibernate, automating the mapping and creation of contract metadata in a PostgreSQL database for 100+ client onboardings.</li>
-        <li>Leveraged JasperReports to deliver regularly scheduled custom reports against PostgreSQL and MSSQL databases per client requirements.</li>
-        <li>Led ETL-based migration from MSSQL to PostgreSQL, resolving schema differences and optimizing performance in the target environment.</li>
-      </ul>
-    </div>
 
-    <div class="job">
-      <div class="job-header">
-        Novatus Inc. <span class="sep">|</span> <span class="title">Technical Support</span> <span class="sep">|</span> <span class="dates">03/2014 – 03/2015</span>
+      <div class="role-block">
+        <div class="role-header">
+          <span class="role-title">Technical Support</span>
+          <span class="role-dates">03/2014 – 03/2015</span>
+        </div>
+        <ul>
+          <li>Aided legal teams, procurement departments, and sales professionals by diagnosing and resolving complex issues in an enterprise contract lifecycle management application, working with engineers to identify bugs and validate fixes prior to release.</li>
+          <li>Created and maintained client-side unit tests using the Siesta Test Framework and Selenium.</li>
+        </ul>
       </div>
-      <ul>
-        <li>Aided legal teams, procurement departments, and sales professionals by diagnosing and resolving complex issues in an enterprise contract lifecycle management application, working with engineers to identify bugs and validate fixes prior to release.</li>
-        <li>Created and maintained client-side unit tests using the Siesta Test Framework and Selenium.</li>
-      </ul>
     </div>
 
+    <!-- Sanders -->
     <div class="job">
       <div class="job-header">
         Sanders Company <span class="sep">|</span> <span class="title">Field Service Technician Apprentice</span> <span class="sep">|</span> <span class="dates">01/2006 – 02/2007</span>
@@ -329,9 +382,21 @@
       </ul>
     </div>
 
+    <div class="section-header">Projects</div>
+
+    <div class="project">
+      <div class="project-title">Workout Tracker App <span class="status">(Active development)</span></div>
+      <p class="project-desc">Building a full-stack workout tracking application with a React frontend and Golang backend. Applying production-grade patterns including REST API design, containerization with Docker, and CI practices.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Open Source Contribution — Go-based MCP Server <span class="status">(Active)</span></div>
+      <p class="project-desc">Contributing to an open source Go implementation of a Model Context Protocol (MCP) server, gaining experience with protocol design and Go library authorship.</p>
+    </div>
+
     <div class="section-header">Education</div>
     <div class="edu">
-      <div class="edu-degree">Associate of Science, Political Science</div>
+      <div class="edu-degree">Associate of Science, Culinary Arts</div>
       <div class="edu-school">Palm Beach State College &nbsp;|&nbsp; West Palm Beach, FL</div>
     </div>
 
@@ -343,7 +408,6 @@
       localStorage.setItem('dark', isDark);
       document.getElementById('dark-toggle').textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
     }
-
     if (localStorage.getItem('dark') === 'true') {
       document.body.classList.add('dark');
       document.getElementById('dark-toggle').textContent = '☀️ Light mode';
